@@ -18,16 +18,20 @@ A high-performance, feature-rich music player built with React. Handles thousand
 ## 📸 Screenshots
 
 ### Main Player Interface with Waveform Visualization
+
 ![Main Player View](./public/assets/1.png)
 
 ### Virtualized Playlist with Track Management
-![Playlist View](./public/assets/2.png)
 
-### Album Art Grid View
-![Album Grid](./public/assets/3.png)
+![Queue & Search](./public/assets/4.png)
 
 ### Queue Management & Search Functionality
-![Queue & Search](./public/assets/4.png)
+
+![Album Grid](./public/assets/3.png)
+
+### Album Art Grid View
+
+![Playlist View](./public/assets/2.png)
 
 ## 🎯 Quick Validation
 
