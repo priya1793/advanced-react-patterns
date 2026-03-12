@@ -15,6 +15,20 @@ A high-performance, feature-rich music player built with React. Handles thousand
 - Playback Controls — Play/pause, next/previous, shuffle, repeat, volume control
 - Waveform Seeking — Click anywhere on the main player waveform to jump to that position
 
+## 📸 Screenshots
+
+### Main Player Interface with Waveform Visualization
+![Main Player View](./public/assets/1.png)
+
+### Virtualized Playlist with Track Management
+![Playlist View](./public/assets/2.png)
+
+### Album Art Grid View
+![Album Grid](./public/assets/3.png)
+
+### Queue Management & Search Functionality
+![Queue & Search](./public/assets/4.png)
+
 ## 🎯 Quick Validation
 
 Use these steps to verify all features:
