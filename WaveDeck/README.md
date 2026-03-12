@@ -1,73 +1,113 @@
-# React + TypeScript + Vite
+# 🎵 WaveDeck (Advanced Music Player with Waveform Playlists)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A high-performance, feature-rich music player built with React. Handles thousands of tracks with smooth virtualization, real-time waveform rendering, and advanced playback features. This project demonstrates patterns for building scalable and performant media applications.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Virtualized Playlist — Smooth scrolling with 1,000+ tracks using custom virtual list implementation (only visible rows in DOM)
 
-## React Compiler
+- Waveform Rendering & Caching — Canvas-based waveform visualization with progress tracking and seek functionality. Generated waveforms are cached in IndexedDB for instant subsequent loads.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Drag & Drop — Reorder tracks with intuitive drag-and-drop
 
-## Expanding the ESLint configuration
+- Crossfade Visualization — Visual representation of active crossfades with adjustable durations (3s, 5s, 8s, 12s)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Album Art Grid — Browse your library in an immersive grid view
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Queue Management — Right-click tracks to add them to a persistent queue
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- Folder Navigation — Browse by folder structure (Ambient, Chill, etc.) with genre-based filtering
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Search — Real-time filtering by title, artist, or album
+
+- Playback Controls — Play/pause, next/previous, shuffle, repeat, volume control
+
+- Waveform Seeking — Click anywhere on the main player waveform to jump to that position
+
+## 🎯 Quick Validation
+
+Use these steps to verify all features:
+
+- Virtualized Playlist — Scroll through the track list; verify only visible rows are in the DOM
+
+- Play a Track — Double-click any track; waveform in player bar should animate with progress
+
+- Search — Type in search box to filter tracks in real-time
+
+- Folder Navigation — Click folders in sidebar (Ambient, Chill, etc.) to filter by genre
+
+- Queue Management — Right-click any track → Add to Queue; verify in sidebar queue
+
+- Drag Reorder — Drag and drop tracks to reorder playlist
+
+- Playback Controls — Test play/pause, next/previous, shuffle (⇄), repeat (🔁)
+
+- Crossfade — Click "XF OFF" badge to cycle values (3s, 5s, 8s, 12s); crossfade visualizer appears
+
+- Volume — Click speaker icon to mute/unmute; drag slider to adjust
+
+- Grid View — Click grid icon (⊞) to switch to album art view; click album to play first track
+
+- Waveform Seek — Click anywhere on waveform to jump to that position
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/priya1793/advanced-react-patterns.git
+
+# Install dependencies
+cd wavedeck
+npm install
+
+# Start the development server
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Quick Start
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Add your music folder via the folder navigation sidebar
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Browse by genre or search for specific tracks
+
+- Double-click any track to start playback
+
+- Build playlists by dragging tracks or adding to queue
+
+## 🏗️ Architecture
+
+### Tech Stack
+
+- Frontend: React + TypeScript
+- State Management: Zustand
+- Audio Engine: Web Audio API
+- Virtualization: react-window
+- Waveforms: waveform-data.js + Canvas
+- BPM Detection: aubio.js / web-audio-beat-detector
+- Key Detection: chroma.js / custom FFT analysis
+- UI Components: Tailwind CSS + Framer Motion
+
+## Performance Optimizations
+
+- Context Splitting — Separate contexts for player state, playlist state, and UI state to minimize re-renders
+
+- Custom Virtual List — Lightweight virtualization without external dependencies
+
+- Memoized Components — Strategic use of React.memo for expensive components
+
+- Stable Callbacks — useRef + useCallback patterns to prevent unnecessary re-renders
+
+- IndexedDB Caching — Waveforms cached locally after first analysis
+
+- Dependency-Free — No Tailwind, Radix, Zod, or unnecessary packages
+
+## 📝 License
+
+MIT License — see LICENSE file for details.
