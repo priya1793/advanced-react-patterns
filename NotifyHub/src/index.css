@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-app: 0 0% 96%;
+    --surface-elevated: 0 0% 100%;
+    --fb-primary: 217 100% 52%;
+    --fb-primary-alpha: 217 100% 52% / 0.1;
+    --text-main: 0 0% 2%;
+    --text-muted: 0 0% 42%;
+    --border-subtle: 0 0% 0% / 0.08;
+    --unread-bg: 211 100% 95%;
+    --hover-bg: 0 0% 0% / 0.04;
+    --shadow-soft:
+      0 0 0 1px rgba(0, 0, 0, 0.05), 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --radius-outer: 12px;
+    --radius-inner: 8px;
+    --easing: cubic-bezier(0.25, 0.1, 0.25, 1);
+
+    /* Resolved colors for inline styles */
+    --surface-color: #ffffff;
+    --text-main-color: #050505;
+    --text-muted-color: #6b6b6b;
+    --hover-bg-solid: rgba(0, 0, 0, 0.05);
+    --border-color: rgba(0, 0, 0, 0.08);
+    --input-bg: #f0f2f5;
+    --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+    --nav-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+    --background: 0 0% 96%;
+    --foreground: 0 0% 2%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 2%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 2%;
+    --primary: 217 100% 52%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 2%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 42%;
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 2%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 0% / 0.08;
+    --input: 0 0% 90%;
+    --ring: 217 100% 52%;
+    --radius: 0.5rem;
+  }
+
+  [data-theme="dark"] {
+    --bg-app: 220 10% 10%;
+    --surface-elevated: 220 10% 14%;
+    --text-main: 0 0% 93%;
+    --text-muted: 0 0% 60%;
+    --border-subtle: 0 0% 100% / 0.08;
+    --unread-bg: 217 40% 18%;
+    --hover-bg: 0 0% 100% / 0.06;
+
+    --surface-color: #1c1e21;
+    --text-main-color: #e4e6eb;
+    --text-muted-color: #b0b3b8;
+    --hover-bg-solid: rgba(255, 255, 255, 0.08);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --input-bg: #3a3b3c;
+    --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --nav-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+
+    --background: 220 10% 10%;
+    --foreground: 0 0% 93%;
+    --card: 220 10% 14%;
+    --card-foreground: 0 0% 93%;
+    --popover: 220 10% 14%;
+    --popover-foreground: 0 0% 93%;
+    --primary: 217 100% 52%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 10% 18%;
+    --secondary-foreground: 0 0% 93%;
+    --muted: 220 10% 18%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 220 10% 18%;
+    --accent-foreground: 0 0% 93%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 100% / 0.08;
+    --input: 220 10% 22%;
+    --ring: 217 100% 52%;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  background: hsl(var(--background));
+  color: var(--text-main-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition:
+    background 300ms,
+    color 300ms;
+}
+
+/* Custom scrollbar for notification dropdown */
+.notification-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(0 0% 60%) transparent;
+}
+
+.notification-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.notification-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.notification-scroll::-webkit-scrollbar-thumb {
+  background: hsl(0 0% 60%);
+  border-radius: 3px;
+}
+
+/* Badge pop animation */
+@keyframes badge-pop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.badge-pop {
+  animation: badge-pop 250ms var(--easing);
+}
+
+/* Skeleton shimmer */
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: 200px 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    hsl(0 0% 93%) 25%,
+    hsl(0 0% 97%) 50%,
+    hsl(0 0% 93%) 75%
+  );
+  background-size: 400px 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-inner);
+}
+
+[data-theme="dark"] .skeleton {
+  background: linear-gradient(
+    90deg,
+    hsl(220 10% 18%) 25%,
+    hsl(220 10% 22%) 50%,
+    hsl(220 10% 18%) 75%
+  );
+  background-size: 400px 100%;
+}
+
+/* Smooth fade-in for notification items */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.notification-item-enter {
+  animation: fadeSlideIn 250ms var(--easing);
+}
